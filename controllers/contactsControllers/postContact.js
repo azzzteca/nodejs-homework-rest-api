@@ -1,8 +1,7 @@
-const contactSchema = require('../../schemas');
-const contactsOperations = require('../../model/contactsOperations');
+const { Contact } = require('../../models');
 
 const postContact = async (req, res) => {
-  const newContact = await contactsOperations.addContact(req.body);
+  const newContact = await Contact.create(req.body);
 
   res.status(201).json({
     status: 'success',
