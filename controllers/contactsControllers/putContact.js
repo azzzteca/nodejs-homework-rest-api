@@ -1,11 +1,11 @@
 const createError = require('http-errors');
 
-const contactsOperations = require('../../model/contactsOperations');
+const { Contact } = require('../../models');
 
 const putContact = async (req, res) => {
   const { contactId } = req.params;
 
-  const updatedContact = await contactsOperations.updateContact(contactId, req.body);
+  const updatedContact = await Contact.findByIdAndUpdate(contactId, req.body, { new: true });
 
   if (!updatedContact) {
     throw createError(404, `There is no contact with id - ${contactId} `);
