@@ -1,6 +1,6 @@
 const { User } = require('../../models');
 
-const patch = async (req, res) => {
+const upateSubscription = async (req, res) => {
   const { subscription } = req.body;
   const { _id, email } = req.user;
 
@@ -19,4 +19,4 @@ const patch = async (req, res) => {
   });
 };
 
-module.exports = patch;
+module.exports = upateSubscription;
