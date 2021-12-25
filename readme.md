@@ -1,1 +1,1 @@
-{ "email": "url_test@mail.com", "password": "urlTestPass" }
+{ "email": "avata@email.com", "password": "avatartest" }
