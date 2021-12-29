@@ -16,7 +16,7 @@ const login = async (req, res) => {
   }
 
   if (!user.verify) {
-    throw Forbidden('Please verify your email');
+    throw Forbidden('You need to verify your email');
   }
 
   const passwordValid = bcrypt.compareSync(password, user.password);
