@@ -1,7 +1,9 @@
 const getCurrent = require('./getCurrent');
-const patch = require('./patch');
+const upateSubscription = require('./upateSubscription');
+const updateAvatar = require('./updateAvatar');
 
 module.exports = {
   getCurrent,
-  patch,
+  upateSubscription,
+  updateAvatar,
 };

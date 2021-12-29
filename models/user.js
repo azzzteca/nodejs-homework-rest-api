@@ -21,6 +21,9 @@ const authShema = Schema(
       type: String,
       default: null,
     },
+    avatarURL: {
+      type: String,
+    },
   },
   { versionKey: false, timestamps: true }
 );
@@ -30,6 +33,7 @@ const joiRegisterSchema = Joi.object({
   email: Joi.string().required(),
   subscription: Joi.string().valid('starter', 'pro', 'business'),
   token: Joi.string(),
+  avatarURL: Joi.string(),
 });
 
 const joiLoginSchema = Joi.object({
