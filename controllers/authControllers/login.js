@@ -1,5 +1,5 @@
 const { User } = require('../../models');
-const { Unauthorized } = require('http-errors');
+const { Unauthorized, Forbidden } = require('http-errors');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
@@ -12,13 +12,17 @@ const login = async (req, res) => {
   const user = await User.findOne({ email });
 
   if (!user) {
-    throw new Unauthorized(`Email or password is wrong`);
+    throw new Unauthorized('Email or password is wrong');
+  }
+
+  if (!user.verify) {
+    throw Forbidden('You need to verify your email');
   }
 
   const passwordValid = bcrypt.compareSync(password, user.password);
 
   if (!passwordValid) {
-    throw new Unauthorized(`Email or password is wrong`);
+    throw new Unauthorized('Email or password is wrong');
   }
 
   const payload = {
